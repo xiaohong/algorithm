@@ -38,10 +38,27 @@ func partition_(a []int, p, r int) int{
 	return i+1
 }
 
+func hoare_partition(a []int, p,q int) int{
+	x := a[p]
+	i := p -1
+	j := r + 1
+	for ; ;{
+		for j = j -1; a[j] <=x; j = j-1 
+		
+		for i = i+1 ; a[i] >=x ; i = i +1
+		
+		if i < j {
+			a[i],a[j] = a[j],a[i]
+		}else{
+			return j
+		}
+	}
+}
+
 
 func  quick_sort_(a []int, p,r int){
 	if (p < r) {
-		q := partition_(a, p, r)
+		q := hoare_partition(a, p, r)
 		quick_sort_(a, p, q-1)
 		quick_sort_(a, q+1, r)
 	}
