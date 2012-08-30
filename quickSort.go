@@ -41,18 +41,24 @@ func partition_(a []int, p, r int) int{
 func hoare_partition(a []int, p,q int) int{
 	x := a[p]
 	i := p -1
-	j := r + 1
-	for ; ;{
-		for j = j -1; a[j] <=x; j = j-1 
+	j := q + 1
+	for {
+		for j = j -1; a[j] >x; j = j-1 {
 		
-		for i = i+1 ; a[i] >=x ; i = i +1
+		}
+		
+		for i = i+1 ; a[i] <x ; i = i +1{
+		
+		}
 		
 		if i < j {
 			a[i],a[j] = a[j],a[i]
 		}else{
 			return j
 		}
+		
 	}
+	return j
 }
 
 

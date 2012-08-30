@@ -1,0 +1,8 @@
+package main
+
+import tree "binarySearchTree"
+import "fmt"
+
+func main(){
+	fmt.Println(tree.T)
+}
