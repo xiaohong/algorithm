@@ -203,3 +203,9 @@ func NewTwoStackQueue() Queue{
 	t := &twoStackQueue{NewArrayStack(), NewArrayStack()}
 	return t
 }
+
+// 10.1-7
+// 使用2个队列实现一个栈
+// 一个主队列，一个辅助队列，入栈时进入主队列，
+// 出栈时，首先把主队列所有元素出对列，一次加入到辅助队列，但主队列为空时
+// 当前元素不入辅助队列，把返回，然后再把辅助队列的数据转移到主队列中
