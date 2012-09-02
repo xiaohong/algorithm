@@ -17,5 +17,18 @@ func main(){
 	t.Inorder_with_stack()
 	t.Inorder_with_stack_2()
 
-t.Preorder()
+	t.Preorder()
+  	fmt.Println( t.Search(3))
+
+  	fmt.Println(t.Search_iterative(3))
+
+  	fmt.Println(t.Maximum())
+  	fmt.Println(t.Minimum())
+
+  	fmt.Println(t.Search_iterative(3).Successor())
+  	fmt.Println(t.Search(3).Predecessor())
+
+  	fmt.Println(t.Minimum_recusive())
+
+  	t.Inorder_minimum_successor()
 }

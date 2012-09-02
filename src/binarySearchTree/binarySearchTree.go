@@ -34,14 +34,14 @@ func (this *Tree) leftSubTree() *Tree{
 	if this.Root.left == nil {
 		return nil
 	}
-	return &Tree{Root: this.Root.left}
+	return &Tree{Root: this.Root.left, Compare:this.Compare}
 }
 
 func (this *Tree) rightSubTree() *Tree{
 	if this.Root.right == nil {
 		return nil
 	}
-	return &Tree{Root : this.Root.right}
+	return &Tree{Root : this.Root.right, Compare:this.Compare}
 }
 
 func NewTree() *Tree{
@@ -58,7 +58,6 @@ func (this *Tree) Insert(v interface{}) {
 	t := this.Root
 	p := t 
 
-	for ; t != nil ; {
 		p = t
 		n := this.Compare(t.Value, v)
 		if n > 0 {
@@ -72,9 +71,9 @@ func (this *Tree) Insert(v interface{}) {
 
 	n := this.Compare(p.Value, v)
 	if n > 0 {
-		p.left = &Node{Value : v}
+		p.left = &Node{Value : v, parent:p}
 	}else if n < 0 {
-		p.right = &Node{Value : v}
+		p.right = &Node{Value : v, parent:p}
 	}
 }
 func (this *Tree) Inorder(){

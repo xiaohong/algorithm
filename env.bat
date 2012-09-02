@@ -1,1 +1,1 @@
-set GOPATH=.
+set GOPATH=F:\algorithm

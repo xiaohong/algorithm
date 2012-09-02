@@ -10,6 +10,9 @@ type Stack interface{
 	Size() int
 }
 
+// 栈指针可以指向当前栈顶元素，也可以指向下一个要压栈的位置
+// 这2者之间的差异主要是栈顶元素的表示
+// 通过size来表示当前元素的数量，然后通过减1来获取当前栈顶元素
 type arrayStack struct{
 	data []interface{}
 	size int 
@@ -21,8 +24,9 @@ func (this *arrayStack) init(){
 }
 
 func (this *arrayStack) resize(newSize int){
-	//t := make([]interface{}, newSize)
-
+	t := make([]interface{}, newSize)
+	copy(t, this.data)
+	this.data = t
 }
 
 func (this *arrayStack) Push(v interface{}){
@@ -38,7 +42,9 @@ func (this *arrayStack) Pop() interface{}{
 		panic("empty stack")
 	}
 	this.size--
-	return this.data[this.size]
+	t := this.data[this.size]
+	this.data[this.size] = nil
+	return t
 }
 
 func (this *arrayStack) Peek() interface{}{

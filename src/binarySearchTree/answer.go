@@ -81,5 +81,5 @@ func (this *Tree) Preorder(){
 	if this.rightSubTree() != nil {
 		this.rightSubTree().Preorder()
 	}
-
 }
+
