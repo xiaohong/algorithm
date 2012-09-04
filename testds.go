@@ -1,7 +1,7 @@
 package main
 
 import  "ds"
-import "fmt"
+//import "fmt"
 
 func main() {
 	d  := ds.NewArrayStack()
@@ -9,10 +9,5 @@ func main() {
 	d.Push(2)
 	d.Push(3)
 
-	fmt.Println(d.Pop())
-	fmt.Println(d.Peek())
-
-	fmt.Println(d)
-
-	fmt.Println(U+000A)
+	ds.Test_PrintTree()
 }

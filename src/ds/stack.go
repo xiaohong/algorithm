@@ -70,5 +70,6 @@ func (this *arrayStack) Size() int{
 func NewArrayStack() Stack{
 	t := new(arrayStack)
 	t.init()
+	
 	return t
 }

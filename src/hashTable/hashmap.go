@@ -1,4 +1,4 @@
-package main
+package hashTable
 
 import "fmt"
 
@@ -7,8 +7,8 @@ type Hashable interface{
 }
 
 type Map interface{
-	Put(key Hashable, v interface{})
-	Get(key Hashable) interface{}
+	Put(key interface{}, v interface{})
+	Get(key interface{}) interface{}
 	Size() int
 }
 
@@ -18,15 +18,15 @@ type Iterator interface{
 }
 
 
-
+// hashmap实现
+// 使用链表解决冲突
 type Entry struct{
-	key Hashable
+	key interface{}
 	val interface{}
 	hash int 
 	next *Entry
 }
 
-// hashmap实现
 type HashMap struct{
 	tables []*Entry
 	size   int
@@ -41,21 +41,29 @@ func NewHashMap() *HashMap{
 	return t
 }
 
-func (m *HashMap) Put(key Hashable, v interface{}){
-	index := key.Hash()%(len(m.tables))
+func hash(v interface{}) int{
+	t, ok := v.(Hashable)
+	if ok {
+		return t.Hash()
+	}
+	return 0
+}
+
+func (m *HashMap) Put(key interface{}, v interface{}){
+	index := hash(key)%(len(m.tables))
 
 
 	var t *Entry = nil
 	if m.tables[index] != nil {
 		t = m.tables[index]
 	}
-	e := Entry{key, v, key.Hash(), t}
+	e := Entry{key, v, hash(key), t}
 	m.tables[index] = &e
 	m.size++
 }
 
-func (m *HashMap) Get(key Hashable) interface{}{
-	index := key.Hash()%(len(m.tables))
+func (m *HashMap) Get(key interface{}) interface{}{
+	index := hash(key)%(len(m.tables))
 
 	entry := m.tables[index]
 
