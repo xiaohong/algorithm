@@ -1,6 +1,6 @@
-package main 
+package main
 
-import  ht "hashTable"
+import ht "hashTable"
 
 func main() {
 	ht.Test_DirectAddressTable()

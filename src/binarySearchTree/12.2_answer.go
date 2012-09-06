@@ -10,15 +10,15 @@ import "fmt"
 // 数据都比他小，如果选择右节点，那么随后的数据都比他大
 
 func check(data []int) bool {
-	for i := 0; i < len(data)-1; i++{
-		if data[i] > data[i+1]{
-			for k := i+2; k < len(data); k++{
+	for i := 0; i < len(data)-1; i++ {
+		if data[i] > data[i+1] {
+			for k := i + 2; k < len(data); k++ {
 				if data[i] < data[k] {
 					return false
 				}
 			}
-		}else if data[i] < data[i+1] {
-			for k := i+2; k < len(data); k++{
+		} else if data[i] < data[i+1] {
+			for k := i + 2; k < len(data); k++ {
 				if data[i] > data[k] {
 					return false
 				}
@@ -28,8 +28,8 @@ func check(data []int) bool {
 	return true
 }
 
-func test_check(){
-	fmt.Println(check([]int{935,278,347,621,299,391,392,358,363}))
+func test_check() {
+	fmt.Println(check([]int{935, 278, 347, 621, 299, 391, 392, 358, 363}))
 }
 
 // 12.2-2
@@ -41,12 +41,10 @@ func (this *Tree) Minimum_recusive() *Node {
 	return (&Tree{Root: this.Root.left}).Minimum_recusive()
 }
 
-
 // 12.2-3
 // 前继者查找算法
 //  1. 如果有左子树，左子树的最大节点就是前继者
 //  2. 没有左子树，则寻找父代节点，最近的当前节点在父节点的左子树上。
-
 
 // 12.2-4
 // 对于单个节点来说是满足的，但是对于a节点的由子树，于b节点的左子树，而且a比b高2个级别时
@@ -76,4 +74,5 @@ func (this *Tree) Inorder_minimum_successor() {
 	}
 }
 
-// 12.2-6 总有一次要回溯到根节点O(k + h)
+// 12.9
+// x是叶子节点，他的父节点要么是大于他节点中最小的，要么是小于它节点中最大的
