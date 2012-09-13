@@ -58,7 +58,7 @@ func (this *OpenAdressHashMap) Size() int{
 }
 
 func (this *OpenAdressHashMap) Delete(key interface{}) bool{
-	h := hash(k) % (len(this.data) -1)
+	h := hash(key) % (len(this.data) -1)
 
 	for this.data[h] != nil {
 		if this.data[h].key == key {
