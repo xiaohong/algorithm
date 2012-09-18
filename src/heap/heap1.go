@@ -29,14 +29,18 @@ func (this *Heap) Insert(v interface{}) {
 	m := append(this.data, v)
 	this.up(m, len(m)-1)
 	this.data = m
+	this.size++
 }
 
 func (this *Heap) Remove() interface{} {
-
+	if this.size == 0{
+		return nil
+	}
 	t := this.data[0]
 	this.data[0] = this.data[len(this.data)-1]
 	this.data = this.data[:len(this.data)-1]
 	this.down(this.data, 0)
+	this.size--
 	return t
 }
 
@@ -69,7 +73,7 @@ func NewHeap(c sort.Comparator) *Heap {
 func Int(a, b interface{}) int {
 	aa, _ := a.(int)
 	bb, _ := b.(int)
-	return -(aa - bb)
+	return (aa - bb)
 }
 
 func Test_Heap() {
@@ -78,7 +82,7 @@ func Test_Heap() {
 		a.Insert(rand.Intn(100))
 	}
 	fmt.Println(a.data)
-	for i := 0; i < 10; i++ {
+	for i := 0; i < 20; i++ {
 		fmt.Println(a.Remove())
 	}
 

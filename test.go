@@ -5,6 +5,7 @@ package main
 import d "chapter4"
 import "hong/sort"
 import "heap"
+import "graph"
 
 func main() {
 	//	c.TestInsertSort()
@@ -18,4 +19,8 @@ func main() {
 	print(sort.Int()(3, 2))
 
 	heap.Test_Heap()
+
+	graph.Test_Reverse()
+
+	heap.Test_MinMaxHeap()
 }
