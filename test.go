@@ -6,6 +6,7 @@ import d "chapter4"
 import "hong/sort"
 import "heap"
 import "graph"
+import "list"
 
 func main() {
 	//	c.TestInsertSort()
@@ -26,6 +27,8 @@ func main() {
 //	heap.Test_a()
 //tt()
 
+
+list.Test_Insert()
 }
 
 
